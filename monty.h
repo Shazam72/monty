@@ -1,5 +1,5 @@
-#ifndef MONTY
-#define MONTY
+#ifndef __MONTY__
+#define __MONTY__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,8 +26,8 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct globals - global structure to use in the functions
- * @lifo: is stack or queue
+ * struct globals - general structure available entirely in the programm
+ * @lifo: checks if there is a stack or a queue
  * @cont: current line
  * @arg: second parameter inside the current line
  * @head: doubly linked list
@@ -63,41 +63,47 @@ typedef struct instruction_s
 
 extern global_t vglo;
 
-/* opcode_instructuions*/
+/* opcode_instructions.c */
 void _push(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **doubly, unsigned int cline);
 void _pop(stack_t **doubly, unsigned int cline);
 void _swap(stack_t **doubly, unsigned int cline);
+
+/* opcode_instructions2.c */
 void _queue(stack_t **doubly, unsigned int cline);
 void _stack(stack_t **doubly, unsigned int cline);
 void _add(stack_t **doubly, unsigned int cline);
 void _nop(stack_t **doubly, unsigned int cline);
 void _sub(stack_t **doubly, unsigned int cline);
+
+/* opcode_instructions3.c */
 void _div(stack_t **doubly, unsigned int cline);
 void _mul(stack_t **doubly, unsigned int cline);
 void _mod(stack_t **doubly, unsigned int cline);
 void _pchar(stack_t **doubly, unsigned int cline);
 void _pstr(stack_t **doubly, unsigned int cline);
+
+/* opcode_instructions4.c */
 void _rotl(stack_t **doubly, unsigned int cline);
 void _rotr(stack_t **doubly, unsigned int cline);
 
-/*get function*/
+/* get_opcodes.c */
 void (*get_opcodes(char *opc))(stack_t **stack, unsigned int line_number);
 
-/*imported functions*/
+/* strings.c */
 int _sch(char *s, char c);
 char *_strtoky(char *s, char *d);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-void *_calloc(unsigned int nmemb, unsigned int size);
 int _strcmp(char *s1, char *s2);
 
-/* doubly linked list functions */
+/* memory_handling.c */
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void *_calloc(unsigned int nmemb, unsigned int size);
+void free_vglo(void);
+
+/* linked_lists.c */
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 stack_t *add_dnodeint(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
-
-/* main */
-void free_vglo(void);
 
 #endif
