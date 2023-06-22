@@ -99,7 +99,7 @@ int _strcmp(char *s1, char *s2);
 /* memory_handling.c */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void *_calloc(unsigned int nmemb, unsigned int size);
-void free_vglo(void);
+void free_global_var(void);
 
 /* linked_lists.c */
 stack_t *add_dnodeint_end(stack_t **head, const int n);

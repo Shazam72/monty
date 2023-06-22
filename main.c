@@ -3,11 +3,11 @@
 global_t vglo;
 
 /**
- * free_vglo - frees the global variables
+ * free_global_var - frees the global variables
  *
  * Return: no return
  */
-void free_vglo(void)
+void free_global_var(void)
 {
 	free_dlistint(vglo.head);
 	free(vglo.buffer);
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 			{
 				dprintf(2, "L%u: ", vglo.cont);
 				dprintf(2, "unknown instruction %s\n", lines[0]);
-				free_vglo();
+				free_global_var();
 				exit(EXIT_FAILURE);
 			}
 			vglo.arg = _strtoky(NULL, " \t\n");
@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
 		vglo.cont++;
 	}
 
-	free_vglo();
+	free_global_var();
 
 	return (0);
 }
